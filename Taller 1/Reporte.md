@@ -1,4 +1,4 @@
-# Clasificación de Imágenes con Regresión Logística
+# Clasificación de Imágenes NN
 
 **Taller 1 - Inteligencia Artificial**  
 **Fecha:** 8 de febrero, 2026
