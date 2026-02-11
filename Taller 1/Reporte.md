@@ -52,6 +52,20 @@ Este proyecto implementa algoritmos de regresión logística desde cero (sin usa
 - Mismo proceso de optimización para comparación
 - Regularización L2 con $\lambda = 0.01$
 
+
+### 3.2.4 Uso del L2
+
+Se usa la regularizacion con L2 con $\lambda = 0.01$ ya que las imagenes tienen muchas variables por cantidad de pixeles y no hay una cantidad de datos que equilibre la balanza, el no usarlo nos puede llevar a un sobreajuste o a pesos enormes, por lo que es mejor usarlo para el modelo lineal y garantizar la estabilidad en el modelo.
+
+
+### 3.2.5 Uso del Cross-Entropy Loss + L2
+
+El cross entropy practicamente se usa para castigar predicciones incorrectas en la clasificación probabilística, ademas, junto al L2 ya que como se dijo antes, multiclase = más parámetros y mayor riesgo de sobreajuste.
+
+### 3.2.6 Uso del Gradient Descent
+
+Basicamente se usa el gradient descent para poder analizar y modificar mas facil el entrenamiento que se quiso hacer de las redes neuronales, pudiendo optimizarlo para tener consistencia entre modelos, comparación justa y evitar introducir variables nuevas, dandonos resultados de learning rate, regularización y número de iteraciones.
+
 ### 3.3 Hiperparámetros
 
 | Dataset | Método | Learning Rate | Iteraciones | Lambda |
@@ -60,6 +74,35 @@ Este proyecto implementa algoritmos de regresión logística desde cero (sin usa
 | Flores  | TensorFlow | 0.05 | 30 épocas | 0.01 |
 | Pokémon | Sigmoid (Manual) | 0.005 | 3000 | 1.0 |
 | Pokémon | TensorFlow | 0.005 | 30 épocas | 0.01 |
+
+
+### 3.3.1 Explicacion de los hiperparametros
+
+#### El modelo de Flores con Softmax manual
+
+El Learning rate = 0.05 nos ofrece un dataset más estable, ademas de que al ser multiclase necesita pasos más grandes y acelera la convergencia.
+
+Las Iteraciones = 3000 nos aseguran convergencia visible y nos permite observar la curva de costo
+
+La Lambda = 1.0 de la que ya hablamos nuevamente nos facilita la idea de que muchas clases = más parámetros y pues el L2 fuerte evita overfit (sobreajuste)
+
+#### El modelo de Flores con TensorFlow
+
+Un LR = 0.05 se mantiene para comparación directa con el modelo manual.
+
+Las 30 épocas son las suficientes para converger y evita sobreentrenamiento bajo las pruebas hechas.
+
+El L2 Lambda = 0.01 nos ayuda a tener una regularizacion suave, sobretodo por que la red neuronal necesita flexibilidad
+
+#### El modelo de Pokémon con Sigmoid manual
+
+Un learning rate = 0.005, es mas pequeño debido a que la clasificacion binaria puede sobresaturar el sigmoide, y esto puede causar oscilaciones, siendo pequeño para estabilizar el entrenamiento, las 3000 iteraciones compensan ese LR pequeño y garantiza su convergencia.
+
+Un L2 de 1.0 es perfecto para el dataset pequeño y nos evita el sobreajuste-
+
+#### El modelo de pokemon con Tensorflow 
+
+Un Lr = 0.005 es para mantener la consistencia con el manual, ademas de que el L2 de 0.01 es para obtener una regularizacion mas suave en la Red neuronal.
 
 ## 4. Resultados
 
